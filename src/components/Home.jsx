@@ -10,7 +10,7 @@ const Home = () => {
         //bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-rose-400 via-fuchsia-500 to-indigo-500
         //bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-purple-900 to-violet-600
 <section>
-        <div className='bg-gray-200'>
+        <div className='bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-400 via-purple-600 to-violet-800'>
              <div className='my-container flex flex-col items-center pb-24 text-center lg:pb-56 '>
                 <h1 className='text-2xl w-full lg:leading-tight sm:text-4xl lg:text-6xl lg:max-w-3xl title-text'>Welcome to GadgetZone</h1>
                 <p className='my-6 text-xs sm:text-base md:text-lg max-w-2/3 md:max-w-xl max-w-2xl text-gray-900'>
