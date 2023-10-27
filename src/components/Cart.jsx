@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStoredCart, removeFromdB } from '../utils/fakeDb';
+import { deleteShoppingCart, getStoredCart, removeFromdB } from '../utils/fakeDb';
 import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from '../Cards/CartItem';
 
@@ -21,6 +21,10 @@ const Cart = () => {
     // toast.error('Product Removed! 🔥')
   }
 
+  const deleteCartHandler = () => {
+    deleteShoppingCart()
+  }
+
     return (
         <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
             <div className='flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 '>
@@ -36,6 +40,7 @@ const Cart = () => {
                                 key={eachProduct.id}
                                 eachProduct={eachProduct}
                                 handleRemoveItem ={handleRemoveItem}
+                         
                             />
                         ))}
 
@@ -52,7 +57,8 @@ const Cart = () => {
                 <div>
 
                       {cartArr.length > 0 ? (
-                           <button className="btn-primary">Clear Cart</button>
+                        //  onClick={() => handleRemoveItem(id)}
+                           <button onClick={()=> deleteCartHandler()} className="btn-primary">Clear Cart</button>
                       ) : (
                           <Link to = '/shop'>
                                   <button className="btn-primary">Back To shop</button>

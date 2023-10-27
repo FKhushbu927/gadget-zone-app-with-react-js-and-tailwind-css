@@ -48,6 +48,10 @@ const removeFromdB = id  => {
      }
 }
 
+//clear all data from local storage
+
+const deleteShoppingCart = () => localStorage.removeItem('shopping-cart')
 
 
-export { addToDb,   getStoredCart, removeFromdB}
+
+export { addToDb,   getStoredCart, removeFromdB, deleteShoppingCart}
