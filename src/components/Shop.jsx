@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from './Cards/ProductCard';
+import { addToDb } from '../utils/fakeDb';
 
 const Shop = () => {
     const productData = useLoaderData();
-    const  handleAddToCart = id =>{
-        console.log(id);
+
+    const [cart, setCart] = useState([]) 
+
+
+    const  handleAddToCart = eachProduct =>{
+        let newCart = []
+
+        const exists = cart.find(
+            existingProduct =>   existingProduct.id ===  eachProduct.id
+        )
+
+        if(! exists){
+            eachProduct.quantity = 1
+            newCart = [...cart,  eachProduct]
+        } else {
+            const rest =  cart.filter(
+                existingProduct =>  existingProduct.id !== eachProduct.id
+            )
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, exists]
+        }
+
+        setCart(newCart)
+        addToDb(eachProduct.id)
     }
  
     return (
