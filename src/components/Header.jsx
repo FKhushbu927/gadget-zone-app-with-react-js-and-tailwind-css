@@ -49,7 +49,12 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <NavLink>
+                        <NavLink
+                                 to='/cart'
+                                 aria-label='cart'
+                                 title='cart'
+                                 className=''
+                        >
                             <div className='relative py-3'>
                                 <ShoppingCartIcon className='h-8 w-8 text-purple-800' />
                                 {/* <p className='absolute bottom-5 left-6'></p> */}
