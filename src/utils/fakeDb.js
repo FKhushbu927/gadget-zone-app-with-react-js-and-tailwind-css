@@ -33,4 +33,21 @@ const  getStoredCart = () => {
 
 }
 
-export { addToDb,   getStoredCart }
+//remove a specific element from local storage
+
+const removeFromdB = id  => {
+        //get the shopping cart from local storage
+
+        const storedCart = localStorage.getItem('shopping-cart');
+        if(storedCart){
+            const shoppingCart = JSON.parse(storedCart);
+            if(id in shoppingCart){
+                   delete shoppingCart[id]
+                   localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
+            }
+     }
+}
+
+
+
+export { addToDb,   getStoredCart, removeFromdB}

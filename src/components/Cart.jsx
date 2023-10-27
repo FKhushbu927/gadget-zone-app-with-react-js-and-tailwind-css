@@ -1,6 +1,6 @@
 import React from 'react';
-import { getStoredCart } from '../utils/fakeDb';
-import { useLoaderData } from 'react-router-dom';
+import { getStoredCart, removeFromdB } from '../utils/fakeDb';
+import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from '../Cards/CartItem';
 
 const Cart = () => {
@@ -12,6 +12,14 @@ const Cart = () => {
             total = total + eachProduct.price * eachProduct.quantity
         }
     }
+    //   Remove Item From Shopping Cart
+  const handleRemoveItem = id => {
+    // const remaining = cartArr.filter(eachProduct => eachProduct.id !== id)
+    // setCart(remaining)
+    removeFromdB(id)
+ 
+    // toast.error('Product Removed! 🔥')
+  }
 
     return (
         <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
@@ -27,6 +35,7 @@ const Cart = () => {
                             <CartItem
                                 key={eachProduct.id}
                                 eachProduct={eachProduct}
+                                handleRemoveItem ={handleRemoveItem}
                             />
                         ))}
 
@@ -45,7 +54,10 @@ const Cart = () => {
                       {cartArr.length > 0 ? (
                            <button className="btn-primary">Clear Cart</button>
                       ) : (
-                        <button className="btn-primary">Back To shop</button>
+                          <Link to = '/shop'>
+                                  <button className="btn-primary">Back To shop</button>
+                          </Link>
+                     
                       )}
                   
                     <button className="btn-outlined">Place Order</button>
