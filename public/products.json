@@ -1,21 +1,22 @@
 [
-    {
-    "id": "623853b2614ad5aba311fdd1",
-    "index": 0,
-    "price": 799,
-    "picture": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec6_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg",
-    "name": "ULTRABOOST 22 SHOES",
-    "category": "Men's Sneaker"
-    },
+  
     
     {
     "id": "623853b2578e9e6ad1ae0dd5",
-    "index": 1,
+    "index": 0,
     "picture": "https://i.ibb.co/mBjmxg2/smart-home-v2-3.jpg",
     "name": "Smart Air Fryer",
     "price": 279,
     "category": "Home Appliance"
     },
+    {
+        "id": "623853b2614ad5aba311fdd1",
+        "index": 1,
+        "price": 799,
+        "picture": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec6_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg",
+        "name": "ULTRABOOST 22 SHOES",
+        "category": "Men's Sneaker"
+     },
     {
     "id": "623853b21fb149d2ee7b76c7",
     "index": 2,

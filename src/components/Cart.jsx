@@ -3,6 +3,9 @@ import { deleteShoppingCart, getStoredCart, removeFromdB } from '../utils/fakeDb
 import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from '../Cards/CartItem';
 import { CartContext } from '../App';
+import toast from 'react-hot-toast'
+
+
 
 const Cart = () => {
 
@@ -16,16 +19,29 @@ const Cart = () => {
     }
     //   Remove Item From Shopping Cart
   const handleRemoveItem = id => {
-    // const remaining = cartArr.filter(eachProduct => eachProduct.id !== id)
-    // setCart(remaining)
+    const remaining = cart.filter(eachProduct => eachProduct.id !== id)
+    setCart(remaining)
     removeFromdB(id)
  
-    // toast.error('Product Removed! 🔥')
+    toast.error('This is an error!');
   }
 
   const deleteCartHandler = () => {
+    setCart([])
     deleteShoppingCart()
+    toast.error('This is an error!');
   }
+  // place order
+  
+  const orderHandler = () =>{
+    if(cart.length>0){
+        setCart([])
+        deleteShoppingCart()
+        toast.success('Order done')
+    }
+     toast.error('Cart Empty!!')
+  }
+
 
     return (
         <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
@@ -68,7 +84,7 @@ const Cart = () => {
                      
                       )}
                   
-                    <button className="btn-outlined">Place Order</button>
+                    <button onClick={() => orderHandler()} className="btn-outlined">Place Order</button>
                 </div>
 
             </div>

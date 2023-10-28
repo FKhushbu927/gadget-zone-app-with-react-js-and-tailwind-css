@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from './Cards/ProductCard';
 import { addToDb } from '../utils/fakeDb';
-import { ProductContext } from '../App';
+import { CartContext, ProductContext } from '../App';
+import toast from 'react-hot-toast'
 
-const Shop = () => {
+const Shop = () => { 
     // const productData = useLoaderData();
     const products = useContext(ProductContext)
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useContext(CartContext)
 
 
     const handleAddToCart = eachProduct => {
@@ -30,6 +31,8 @@ const Shop = () => {
 
         setCart(newCart)
         addToDb(eachProduct.id)
+        toast.success('Successfully created!');
+     
     }
 
     return (
