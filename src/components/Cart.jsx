@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { deleteShoppingCart, getStoredCart, removeFromdB } from '../utils/fakeDb';
 import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from '../Cards/CartItem';
+import { CartContext } from '../App';
 
 const Cart = () => {
 
-    const { cartArr } = useLoaderData()
+    // const { cart } = useLoaderData()
+    const [cart, setCart] = useContext(CartContext)
     let total = 0
-    if (cartArr.length > 0) {
-        for (const eachProduct of cartArr) {
+    if (cart.length > 0) {
+        for (const eachProduct of cart) {
             total = total + eachProduct.price * eachProduct.quantity
         }
     }
@@ -30,12 +32,12 @@ const Cart = () => {
             <div className='flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 '>
 
                 <h2 className='text-xl font-semibold'>
-                    {cartArr.length ? 'Review Cart Items' : 'Cart is Empty'}
+                    {cart.length ? 'Review Cart Items' : 'Cart is Empty'}
                 </h2>
 
                 <ul className='flex flex-col divide-y divide-gray-600'>
                     {
-                        cartArr.map(eachProduct => (
+                        cart.map(eachProduct => (
                             <CartItem
                                 key={eachProduct.id}
                                 eachProduct={eachProduct}
@@ -56,7 +58,7 @@ const Cart = () => {
                 </div>
                 <div>
 
-                      {cartArr.length > 0 ? (
+                      {cart.length > 0 ? (
                         //  onClick={() => handleRemoveItem(id)}
                            <button onClick={()=> deleteCartHandler()} className="btn-primary">Clear Cart</button>
                       ) : (

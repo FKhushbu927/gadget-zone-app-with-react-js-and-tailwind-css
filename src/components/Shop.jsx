@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from './Cards/ProductCard';
 import { addToDb } from '../utils/fakeDb';
+import { ProductContext } from '../App';
 
 const Shop = () => {
-    const productData = useLoaderData();
+    // const productData = useLoaderData();
+    const products = useContext(ProductContext)
+    const [cart, setCart] = useState([])
 
-    const [cart, setCart] = useState([]) 
 
-
-    const  handleAddToCart = eachProduct =>{
+    const handleAddToCart = eachProduct => {
         let newCart = []
 
         const exists = cart.find(
-            existingProduct =>   existingProduct.id ===  eachProduct.id
+            existingProduct => existingProduct.id === eachProduct.id
         )
 
-        if(! exists){
+        if (!exists) {
             eachProduct.quantity = 1
-            newCart = [...cart,  eachProduct]
+            newCart = [...cart, eachProduct]
         } else {
-            const rest =  cart.filter(
-                existingProduct =>  existingProduct.id !== eachProduct.id
+            const rest = cart.filter(
+                existingProduct => existingProduct.id !== eachProduct.id
             )
             exists.quantity = exists.quantity + 1;
             newCart = [...rest, exists]
@@ -30,17 +31,17 @@ const Shop = () => {
         setCart(newCart)
         addToDb(eachProduct.id)
     }
- 
+
     return (
         <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
 
-            {productData.map((eachProduct) => (
+            {products.map((eachProduct) => (
 
                 <ProductCard
-                    key = {eachProduct.id}
+                    key={eachProduct.id}
                     eachProduct={eachProduct}
                     handleAddToCart={handleAddToCart}
-                 />
+                />
                 //<p className='text-center' key = {i}>{(i+1) + '.  ' + eachProduct.name}</p>
             ))}
         </div>
